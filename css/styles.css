@@ -107,14 +107,14 @@ header {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 15px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-text h2 {
     color: #ffffff;
     font-size: 1.8rem;
     margin-bottom: 30px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
 }
 
 .view-products {
@@ -289,6 +289,226 @@ header {
 }
 
 /* 
+ * 產品詳情頁樣式
+ */
+.product-container {
+    max-width: 1000px;
+    margin: 100px auto 60px;
+    padding: 0 20px;
+}
+
+.product-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.product-header .product-image {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 30px;
+    padding-top: 0;
+    position: static;
+}
+
+.product-header .product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: static;
+    object-fit: contain;
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.3;
+}
+
+.product-description {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #f8b500;
+}
+
+.description-text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.8;
+}
+
+.product-features-long {
+    margin-bottom: 50px;
+}
+
+.feature-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.feature-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.report-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.report-button {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #555;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.report-button:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.report-button i {
+    margin-right: 8px;
+}
+
+/* 
+ * 檢驗報告頁樣式
+ */
+.report-container {
+    max-width: 1000px;
+    margin: 100px auto 60px;
+    padding: 0 20px;
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.report-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.report-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.report-date {
+    font-size: 14px;
+    color: #888;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: #666;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    transition: color 0.3s;
+}
+
+.back-link i {
+    margin-right: 8px;
+}
+
+.back-link:hover {
+    color: #f8b500;
+}
+
+.report-section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 24px;
+    color: #333;
+    margin-right: 15px;
+    padding-left: 10px;
+    border-left: 4px solid #f8b500;
+}
+
+.section-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.report-images {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.report-image {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.report-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.report-caption {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    border-top: 1px solid #f0f0f0;
+    background-color: #fafafa;
+}
+
+/* 
  * 頁尾樣式
  */
 .site-footer {
@@ -391,6 +611,10 @@ header {
     
     .footer-container {
         flex-direction: column;
+    }
+    
+    .product-description {
+        padding: 25px;
     }
 }
 
