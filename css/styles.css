@@ -1,3 +1,7 @@
+/* 
+ * 全域樣式和共用元素
+ */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +10,14 @@
 }
 
 body {
-    background-color: #fff;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
+/* 
+ * 頁頭導航樣式
+ */
 header {
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -53,14 +62,19 @@ header {
     transition: color 0.3s;
 }
 
-.nav-menu a:hover {
+.nav-menu a:hover, .nav-menu a.active {
     color: #f8b500;
 }
 
+/* 
+ * 首頁主視覺區塊樣式
+ */
 .main-visual {
     margin-top: 70px;
     position: relative;
     cursor: pointer;
+    display: block;
+    text-decoration: none;
 }
 
 .main-visual img {
@@ -121,6 +135,162 @@ header {
     transform: translateY(-3px);
 }
 
+/* 
+ * 產品列表頁樣式
+ */
+.page-content {
+    max-width: 1200px;
+    margin: 120px auto 60px;
+    padding: 0 20px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-title h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.page-title p {
+    font-size: 16px;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.category-section {
+    margin-bottom: 60px;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.category-title h2 {
+    font-size: 24px;
+    color: #333;
+    margin-right: 15px;
+}
+
+.category-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #e0e0e0;
+}
+
+.category-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #f8b500;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    overflow: hidden;
+}
+
+.product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.product-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.product-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    background-color: #f0f0f0;
+    color: #555;
+    border-radius: 20px;
+}
+
+.product-button {
+    display: inline-block;
+    background-color: #f8b500;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.product-button:hover {
+    background-color: #e69f00;
+}
+
+/* 
+ * 頁尾樣式
+ */
 .site-footer {
     background-color: #333;
     color: #fff;
@@ -186,6 +356,15 @@ header {
     font-size: 12px;
 }
 
+/* 
+ * 響應式設計
+ */
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -212,5 +391,11 @@ header {
     
     .footer-container {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
     }
 }
