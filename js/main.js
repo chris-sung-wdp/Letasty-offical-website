@@ -26,27 +26,32 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 顯示目標報告部分
             const targetId = this.getAttribute('data-target');
-            document.getElementById(targetId).style.display = 'block';
-            
-            // 重設滑塊位置
-            resetSlider(targetId);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) { // 添加檢查
+                targetElement.style.display = 'block';
+                // 重設滑塊位置
+                resetSlider(targetId);
+            }
         });
     });
     
     // 點擊頁碼指示器切換頁面
     sliders.forEach(function(sliderId) {
         const dots = document.querySelectorAll(`#${sliderId}-pagination .slider-dot`);
-        dots.forEach(function(dot) {
-            dot.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-index'));
-                goToSlide(sliderId, index);
+        if (dots && dots.length > 0) { // 添加檢查
+            dots.forEach(function(dot) {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    goToSlide(sliderId, index);
+                });
             });
-        });
+        }
     });
     
     // 支持觸控滑動
     sliders.forEach(function(sliderId) {
         const sliderEl = document.getElementById(`${sliderId}-slider`);
+        if (!sliderEl) return; // 如果滑動器不存在，直接返回
         
         let startX;
         let currentTranslate = 0;
@@ -150,8 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function initSlider(sliderId) {
     const slider = document.getElementById(`${sliderId}-slider`);
+    if (!slider) return; // 如果滑動器不存在，直接返回
+    
     const prevBtn = document.querySelector(`.prev-btn[data-slider="${sliderId}"]`);
     const nextBtn = document.querySelector(`.next-btn[data-slider="${sliderId}"]`);
+    if (!prevBtn || !nextBtn) return; // 如果按鈕不存在，直接返回
+    
     const slideCount = slider.children.length;
     let currentSlide = 0;
     
@@ -182,8 +191,12 @@ function initSlider(sliderId) {
  */
 function goToSlide(sliderId, index) {
     const slider = document.getElementById(`${sliderId}-slider`);
+    if (!slider) return; // 如果滑動器不存在，直接返回
+    
     const prevBtn = document.querySelector(`.prev-btn[data-slider="${sliderId}"]`);
     const nextBtn = document.querySelector(`.next-btn[data-slider="${sliderId}"]`);
+    if (!prevBtn || !nextBtn) return; // 如果按鈕不存在，直接返回
+    
     const dots = document.querySelectorAll(`#${sliderId}-pagination .slider-dot`);
     const slideCount = slider.children.length;
     
@@ -195,9 +208,11 @@ function goToSlide(sliderId, index) {
     nextBtn.classList.toggle('disabled', index === slideCount - 1);
     
     // 更新頁碼指示器
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-    });
+    if (dots && dots.length > 0) { // 添加檢查
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
     
     // 更新頁碼文字
     updatePageIndicator(sliderId, index, slideCount);
@@ -211,7 +226,9 @@ function goToSlide(sliderId, index) {
  */
 function updatePageIndicator(sliderId, currentIndex, totalSlides) {
     const indicator = document.getElementById(`${sliderId}-indicator`);
-    indicator.textContent = `${currentIndex + 1} / ${totalSlides}`;
+    if (indicator) { // 添加檢查
+        indicator.textContent = `${currentIndex + 1} / ${totalSlides}`;
+    }
 }
 
 /**
@@ -219,5 +236,8 @@ function updatePageIndicator(sliderId, currentIndex, totalSlides) {
  * @param {string} sliderId - 滑塊的ID前綴
  */
 function resetSlider(sliderId) {
+    const slider = document.getElementById(`${sliderId}-slider`);
+    if (!slider) return; // 如果滑動器不存在，直接返回
+    
     goToSlide(sliderId, 0);
 }
